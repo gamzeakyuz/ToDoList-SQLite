@@ -9,9 +9,27 @@ import SwiftUI
 
 @main
 struct ToDoList_SQLiteApp: App {
+    
+    @State var todoViewModel: ToDoViewModel = ToDoViewModel()
+    @StateObject var launchManager = AppLaunchManager()
+    
     var body: some Scene {
+//        WindowGroup {
+//            NavigationView {
+//                TodoView()
+//            }
+//            .environmentObject(todoViewModel)
+//        }
         WindowGroup {
-            ContentView()
+            if launchManager.isFirstLaunch {
+                WelcomeView(launchManager: launchManager)
+            } else {
+                NavigationView {
+                    TodoView()
+                }
+                .environmentObject(todoViewModel)
+            }
         }
+        
     }
 }
