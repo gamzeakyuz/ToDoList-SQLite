@@ -14,7 +14,6 @@ struct WelcomeView: View {
 
     var body: some View {
         ZStack {
-            // 🌈 Arka Plan – Canlı ve yumuşak geçişli
             LinearGradient(gradient: Gradient(colors: [Color.black, Color.orange]),
                            startPoint: .bottom,
                            endPoint: .topLeading)
@@ -22,8 +21,6 @@ struct WelcomeView: View {
 
             VStack(spacing: 25) {
                 Spacer()
-
-                // 🚀 Animasyonlu İkon
                 Image(systemName: "checkmark.circle.fill")
                     .resizable()
                     .frame(width: 90, height: 90)
@@ -31,7 +28,6 @@ struct WelcomeView: View {
                     .scaleEffect(animate ? 1.1 : 0.9)
                     .animation(.easeInOut(duration: 1.2).repeatForever(autoreverses: true), value: animate)
 
-                // 📝 İlham Verici Başlık
                 Text("Bugün Yeni Bir Başlangıç.")
                     .font(.system(size: 30, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
@@ -40,7 +36,6 @@ struct WelcomeView: View {
                     .opacity(fadeIn ? 1 : 0)
                     .animation(.easeOut(duration: 1.2).delay(0.3), value: fadeIn)
 
-                // 📖 Alt Açıklama
                 Text("Görevlerini sırala, öncelik ver ve zihnini hafiflet. Kontrol artık sende.")
                     .font(.body)
                     .foregroundColor(.white.opacity(0.85))
@@ -57,31 +52,8 @@ struct WelcomeView: View {
                     .opacity(fadeIn ? 1 : 0)
                     .animation(.easeOut(duration: 1.2).delay(0.6), value: fadeIn)
 
-//                // 🔍 Uygulama Özellikleri
-//                VStack(alignment: .leading, spacing: 12) {
-//                    HStack {
-//                        Image(systemName: "list.bullet")
-//                        Text("Görevlerini kolayca listele")
-//                    }
-//                    HStack {
-//                        Image(systemName: "bell")
-//                        Text("Hatırlatıcılarla günü kaçırma")
-//                    }
-//                    HStack {
-//                        Image(systemName: "star.fill")
-//                        Text("Öncelikli görevlerini vurgula")
-//                    }
-//                }
-//                .font(.headline)
-//                .foregroundColor(.white)
-//                .padding(.top, 20)
-//                .padding(.horizontal)
-//                .opacity(fadeIn ? 1 : 0)
-//                .animation(.easeOut(duration: 1.2).delay(0.9), value: fadeIn)
-
                 Spacer()
 
-                // 🔘 Başlayalım Butonu
                 Button(action: {
                     launchManager.markWelcomeSeen()
                 }) {

@@ -28,11 +28,11 @@ struct TaskRowView: View {
                     .strikethrough(taskRow.isCompleted, color: .gray)
                     .foregroundColor(taskRow.isCompleted ? .gray : .primary)
                 
-                Text("Added: \(taskRow.createdAt.formatted(.dateTime.day().month().year().hour().minute()))")
+                Text("Eklenme: \(taskRow.createdAt.formatted(.dateTime.day().month().year().hour().minute()))")
                     .font(.caption2)
                     .foregroundColor(.gray)
                 
-                Text("Completed: \(taskRow.completedAt?.formatted(.dateTime.day().month().year().hour().minute()) ?? "-")")
+                Text("Tamamlanma: \(taskRow.completedAt?.formatted(.dateTime.day().month().year().hour().minute()) ?? "-")")
                     .font(.caption2)
                     .foregroundColor(.gray)
             }
@@ -48,7 +48,7 @@ struct TaskRowView: View {
 
 struct TaskRowView_Previews: PreviewProvider {
     
-    static var task1 = TaskModel(id: 1, title: "This is my first item", isCompleted: true, imagePath: "photo", createdAt: Date.now, completedAt: nil)
+    static var task1 = TaskModel(id: 1, title: "Bu benim ilk görevim", isCompleted: true, imagePath: "photo", createdAt: Date.now, completedAt: nil)
     
     static var previews: some View {
         TaskRowView(taskRow: task1)

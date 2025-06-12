@@ -22,13 +22,8 @@ struct AddTask: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 40) {
-                
-//                Text("Add a Task")
-//                    .font(.title) 
-//                    .fontWeight(.heavy)
-//                
                 HStack {
-                    TextField("Task Title", text: $textfieldText)
+                    TextField("Görev Başlığı", text: $textfieldText)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     
                     Button(action: {
@@ -52,7 +47,7 @@ struct AddTask: View {
                         .cornerRadius(20)
                 }
                 
-                Button("Save") {
+                Button("Kaydet") {
                     if textIsAppropriate() {
                         var imagePath: String?
                         if let image = selectedImage {
@@ -74,7 +69,7 @@ struct AddTask: View {
             }
             .padding(.top)
         }
-        .navigationTitle("Add a task")
+        .navigationTitle("Görev Ekle")
         .alert(isPresented: $showAlert, content: getAlert)
         .sheet(isPresented: $showingImagePicker) {
             ImagePicker(selectedImage: $selectedImage)
@@ -82,7 +77,7 @@ struct AddTask: View {
     }
     func textIsAppropriate() -> Bool {
         if textfieldText.count < 5 {
-            alertTitle = "Task title must be at least 5 characters!"
+            alertTitle = "Görev başlığı en az 5 karakter olmalıdır!"
             showAlert.toggle()
             return false
         }

@@ -20,12 +20,12 @@ struct TodoView: View {
             if todoViewModel.tasks.isEmpty {
                 VStack(spacing: 10) {
                     
-                    Text("There is no task!")
+                    Text("Hiçbir görev yok!")
                         .font(.title)
                         .fontWeight(.semibold)
                         .shadow(color: Color(#colorLiteral(red: 0.8803732991, green: 0.903868854, blue: 0.0486465469, alpha: 1)), radius: 25)
                     
-                    Text(" Are you a productive person? I think you should click the add button and add a bunch of items to your todo list! ")
+                    Text("Üretken bir insan mısınız? Bence ekle butonuna tıklayıp yapılacaklar listenize bir sürü madde eklemelisiniz!")
                         .font(.subheadline)
                         .foregroundColor(.gray)
                         .padding(.bottom, 20)
@@ -60,18 +60,18 @@ struct TodoView: View {
                                 Text(task.title)
                                     .font(.headline)
                                     .strikethrough(task.isCompleted, color: .gray)
-                                Text(task.isCompleted ? "Completed" : "Not Completed")
+                                Text(task.isCompleted ? "Tamamlandı" : "Tamamlanmadı")
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                                 
                                 // Eklenme tarihi
-                                Text("Added: \(formatterDate(task.createdAt))")
+                                Text("Eklenme: \(formatterDate(task.createdAt))")
                                     .font(.caption2)
                                     .foregroundColor(.gray)
                                 
                                 // Tamamlanma tarihi varsa göster
                                 if let completedAt = task.completedAt {
-                                    Text("Completed: \(formatterDate(completedAt))")
+                                    Text("Tamamlanma: \(formatterDate(completedAt))")
                                         .font(.caption2)
                                         .foregroundColor(.green)
                                 }
@@ -101,18 +101,7 @@ struct TodoView: View {
         .navigationTitle("My List")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(leading: EditButton(),trailing: NavigationLink(destination: AddTask()) { Image(systemName: "text.badge.plus") })
-        //        .navigationBarItems(
-        //            leading: EditButton(),
-        //            trailing: Button(action: {
-        //                isAddTaskPresented.toggle()
-        //            }) {
-        //                Image(systemName: "text.badge.plus")
-        //            }
-        //        )
         .sheet(isPresented: $showingImagePicker) { ImagePicker(selectedImage: $selectedImage) }
-        //        .sheet(isPresented: $isAddTaskPresented) {
-        //            AddTask()
-        //        }
     }
     
    
